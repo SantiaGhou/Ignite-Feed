@@ -3,7 +3,7 @@ import styles from './Comment.module.css';
 import { Avatar } from './avatar';
 import { useState } from 'react';
 
-export function Comment({ content, author = "Usuário Anônimo", onDelete }) {
+export function Comment({ content, author = "SantiaGhou", onDelete }) {
     const [liked, setLiked] = useState(false);
 
     const handleLike = () => {
