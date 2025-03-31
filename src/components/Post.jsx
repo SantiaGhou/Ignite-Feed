@@ -3,28 +3,46 @@ import styles from './Post.module.css';
 import React from 'react';
 import { Comment } from './Comment';
 
-export function Post() {
+export function Post(props) {
+  const publishedDateFormatted = new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: 'long',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date(props.publishedAt));
+
+  const publishedDateRelativeToNow = new Intl.RelativeTimeFormat('pt-BR', {
+    style: 'short',
+  }).format(
+    (new Date(props.publishedAt).getTime() - new Date().getTime()) / 1000 / 60 / 60, // Convertendo para horas
+    'hours'
+  );
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar
-          src={"https://github.com/Darkx32.png"}
-          />
+          <Avatar src={props.author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>Matheus</strong>
-            <span>.NET Developer</span>
+            <strong>{props.author.name}</strong>
+            <span>{props.author.role}</span>
           </div>
         </div>
 
-        <time title="11 de Maio às 08:13h" dateTime="2022-05-11 08:13:00">Publicado há 1h</time>
+        <time title={publishedDateFormatted} dateTime={new Date(props.publishedAt).toISOString()}>
+          {publishedDateRelativeToNow}
+        </time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galeraa 👋</p>
-        <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
-        <p>👉<a href="">jane.design/doctorcare</a></p>
-        <p><a href="">#novoprojeto #nlw #react</a></p>
+        {props.content.map((line, index) => {
+          if (line.type === 'paragraph') {
+            return <p key={index}>{line.content}</p>;
+          } else if (line.type === 'link') {
+            return <p key={index}><a href="#">{line.content}</a></p>;
+          }
+          return null;
+        })}
       </div>
 
       <form className={styles.commentForm}>
@@ -35,10 +53,9 @@ export function Post() {
         </footer>
       </form>
 
-
       <div className={styles.commentList}>
-        <Comment/>
+        <Comment />
       </div>
     </article>
-  )
+  );
 }
