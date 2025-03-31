@@ -1,18 +1,19 @@
+import { Avatar } from './avatar';
 import styles from './Post.module.css';
 import React from 'react';
+import { Comment } from './Comment';
 
 export function Post() {
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <img 
-            className={styles.avatar} 
-            src="https://instagram.fgnm1-1.fna.fbcdn.net/v/t51.2885-19/487037882_622905877385634_9127151639876459389_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_ht=instagram.fgnm1-1.fna.fbcdn.net&_nc_cat=106&_nc_oc=Q6cZ2QE7-FUd60tXItU14GI2VV1oYhDeUjR68wqXmxlVgu2oiUGBqN1Vs6yfealkU7m_F-o&_nc_ohc=_r3fr6FoKDMQ7kNvgE-eCBa&_nc_gid=NTBmBrQHNco4zqtBo4ag_g&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AYFC1_pqmbMCXTy2PxR4kh-3pLqbn9-CTxp67ZFnwv8mDQ&oe=67ECF262&_nc_sid=7a9f4b" 
+          <Avatar
+          src={"https://github.com/Darkx32.png"}
           />
           <div className={styles.authorInfo}>
-            <strong>Raphael</strong>
-            <span>Web Developer</span>
+            <strong>Matheus</strong>
+            <span>.NET Developer</span>
           </div>
         </div>
 
