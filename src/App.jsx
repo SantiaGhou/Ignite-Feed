@@ -35,6 +35,20 @@ const posts = [
     ],
     publishedAt: new Date('2022-05-10 20:00:00'),
   },
+  {
+    id: 3,
+    author: {
+      avatarUrl: 'https://github.com/Jh0rd4n.png',
+      name: 'Jhordan',
+      role: 'Frontend Developer'
+    },
+    content: [
+      { type: 'paragraph', content: 'Salve meus manos' },
+      { type: 'paragraph', content: 'Deem uma olhada nos projetos que fiz no meu inicio em frontend! 🚀' },
+      { type: 'link', content: 'https://github.com/Jh0rd4n/Projetos-de-Cursos-HTML-CSS' },
+    ],
+    publishedAt: new Date('2022-05-10 20:00:00'),
+  }
 ];
 
 
